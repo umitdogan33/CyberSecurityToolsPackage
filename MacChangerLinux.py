@@ -12,12 +12,12 @@ def get_user_input():
     return parse_object.parse_args();
 
 def change_mac_address(interface,new_mac):
-    sp.call(["ifconfig", interface, "down"]);
-    sp.call(["ifconfig", interface, "hw", "ether",new_mac]);
-    sp.call(["ifconfig", interface, "up"]);
+    sp.call(["ifconfig", str(interface), "down"]);
+    sp.call(["ifconfig", str(interface), "hw", "ether",str(new_mac)]);
+    sp.call(["ifconfig", str(interface), "up"]);
 
 def control_new_mac(interface):
-    ifconfig = sp.sp.check_output(["ifconfig", interface]);
+    ifconfig = sp.check_output(["ifconfig", interface]);
     new_mac = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", str(ifconfig));
 
     if new_mac:
