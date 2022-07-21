@@ -17,7 +17,7 @@ def change_mac_address(interface,new_mac):
     sp.call(["ifconfig", str(interface), "up"]);
 
 def control_new_mac(interface):
-    ifconfig = sp.check_output(["ifconfig", interface]);
+    ifconfig = sp.check_output(["ifconfig", str(interface)]);
     new_mac = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", str(ifconfig));
 
     if new_mac:
