@@ -11,7 +11,7 @@ def get_user_input():
     parse_object.add_option("-m", "--mac", dest="new_mac", help="New MAC address");
     return parse_object.parse_args();
 
-def change_mac_address(interface,new_mac):
+def change_mac_address(interface="eth0",new_mac="12:22:43:14:25"):
     sp.call(["ifconfig", str(interface), "down"]);
     sp.call(["ifconfig", str(interface), "hw", "ether",str(new_mac)]);
     sp.call(["ifconfig", str(interface), "up"]);
