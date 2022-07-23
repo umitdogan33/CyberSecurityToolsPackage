@@ -16,14 +16,14 @@ def get_user_input():
     parse_object.add_option("-i", "--ipadress", dest="ip_address", help="Enter ip adress range");
     (user_input,arguments) = parse_object.parse_args();
     if not user_input.ip_address:
-        ifconfig = sp.check_output(["ifconfig","-v","wlan0"]);
-        ip_address = re.search("\w\w\w\w \d.\d.\d.\d.\d.\d.",str(ifconfig));
-        return ip_address.group(0)[0];
-    return user_input;
+        return user_input;
 
 
 def scan_my_network(ip):
-    
+    if not ip:
+        ifconfig = sp.check_output(["ifconfig","-v","wlan0"]);
+        ip_address = re.search("\w\w\w\w \d.\d.\d.\d.\d.\d.",str(ifconfig));
+        ip = ip_address.group(0)[0];
     #"192.168.1.43/24"
     arp_request_packet = scapy.ARP(pdst=str(ip))
     broadcast_packet = scapy.Ether(dst="ff:ff:ff:ff:ff:ff")
