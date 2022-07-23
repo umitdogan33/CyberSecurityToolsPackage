@@ -23,7 +23,7 @@ def scan_my_network(ip):
     if not ip:
         ifconfig = sp.check_output(["ifconfig","-v","wlan0"]);
         ip_address = re.search("\w\w\w\w \d.\d.\d.\d.\d.\d.",str(ifconfig));
-        ip = ip_address.group(0)[0];
+        ip = ip_address.group(0)[0] + "/24";
     #"192.168.1.43/24"
     arp_request_packet = scapy.ARP(pdst=str(ip))
     broadcast_packet = scapy.Ether(dst="ff:ff:ff:ff:ff:ff")
