@@ -3,6 +3,8 @@ import myModule as md
 import optparse as op
 from rich.console import Console
 from rich.table import Table
+import subprocess as sp
+import re
 
 md.credit();
 #1)arp request
@@ -13,13 +15,15 @@ def get_user_input():
     parse_object = op.OptionParser();
     parse_object.add_option("-i", "--ipadress", dest="ip_address", help="Enter ip adress range");
     (user_input,arguments) = parse_object.parse_args();
-
     if not user_input.ip_address:
-        print("[-] Please enter an ip address");
+        ifconfig = sp.check_output(["ifconfig","-v","wlan0"]);
+        ip_address = re.search("\w\w\w\w \d.\d.\d.\d.\d.\d.",str(ifconfig));
+        return ip_address.group(0)[0];
     return user_input;
 
 
 def scan_my_network(ip):
+    
     #"192.168.1.43/24"
     arp_request_packet = scapy.ARP(pdst=str(ip))
     broadcast_packet = scapy.Ether(dst="ff:ff:ff:ff:ff:ff")
