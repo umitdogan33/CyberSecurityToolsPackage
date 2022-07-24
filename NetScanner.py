@@ -15,8 +15,7 @@ def get_user_input():
     parse_object = op.OptionParser();
     parse_object.add_option("-i", "--ipadress", dest="ip_address", help="Enter ip adress range");
     (user_input,arguments) = parse_object.parse_args();
-    if not user_input.ip_address:
-        return user_input;
+    return user_input;
 
 
 def scan_my_network(ip): 
