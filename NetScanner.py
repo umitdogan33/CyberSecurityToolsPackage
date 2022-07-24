@@ -19,7 +19,7 @@ def get_user_input():
         return user_input;
 
 
-def scan_my_network(ip):
+def scan_my_network(ip): 
     if not ip:
         ifconfig = sp.check_output(["ifconfig","-v","wlan0"]);
         ip_address = re.search("\d.\d.\d.\d.\d.\d\d",str(ifconfig));
