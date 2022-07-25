@@ -18,6 +18,7 @@ def get_user_input():
     parse_object = op.OptionParser();
     parse_object.add_option("-t","--target",dest="target_ip",help="Target IP Address")
     parse_object.add_option("-g","--gateway",dest="gateway_ip",help="Gateway IP Address")
+    parse_object.add_option("-w","--writedestination",dest="write_to_file",help="Enter the path to save the data")
     options = parse_object.parse_args()[0]
     return options;
 
