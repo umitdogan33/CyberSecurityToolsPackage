@@ -44,7 +44,7 @@ def listen_packages():
 
 ips = get_user_input();
 target_ip = ips.target_ip
-gateway_ip = ips.target_ip
+gateway_ip = ips.gateway_ip
 
 
 def analyze_packet(packet):
