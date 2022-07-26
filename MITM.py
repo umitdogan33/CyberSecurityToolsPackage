@@ -28,7 +28,7 @@ def save_data_to_file(data,path="/opt/MITMumitdogan33/DATA.txt"):
     f.writelines(data);
 
 def snifferFileOpener():
-    sp.sp.check_call(["python3","Sniffer.py"]);
+    sp.check_call(["python3","Sniffer.py"]);
 
 
 def arp_poisoning(target_ip,poisoned_ip):
